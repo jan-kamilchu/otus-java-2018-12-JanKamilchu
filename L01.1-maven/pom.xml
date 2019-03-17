@@ -23,7 +23,6 @@
         <maven.compiler.target>8</maven.compiler.target>
         <com.google.guava.version>23.0</com.google.guava.version>
         <my.variable>I love java</my.variable>
-        <java.home.openjdk10>F:\Program Files\Java\jdk1.8.0_201</java.home.openjdk10>
     </properties>
 
     <dependencies>
@@ -31,6 +30,13 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${com.google.guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.proguard</groupId>
+            <artifactId>proguard-base</artifactId>
+            <version>5.2</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
@@ -46,7 +52,7 @@
                     <configuration>
                         <archive>
                             <manifest>
-                                <mainClass>UseGuava</mainClass>
+                                <mainClass>ru.otus.homework1.UseGuava</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
@@ -72,12 +78,11 @@
                         </descriptorRefs>
                         <archive>
                             <manifest>
-                                <mainClass>UseGuava</mainClass>
+                                <mainClass>ru.otus.homework1.UseGuava</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
                 </plugin>
-
 
                 <plugin>
                     <groupId>com.github.wvengen</groupId>
@@ -89,6 +94,7 @@
                             <goals><goal>proguard</goal></goals>
                             <configuration>
                                 <injar>${project.build.finalName}-jar-with-dependencies.jar</injar>
+                                <outjar>${project.build.finalName}-jar-with-dependencies-proguard_base.jar</outjar>
                                 <proguardVersion>5.2</proguardVersion>
                                 <options>
                                     <option>-allowaccessmodification</option>
@@ -103,14 +109,7 @@
                                 <libs>
                                     <lib>${java.home}/lib/rt.jar</lib>
                                 </libs>
-                                <dependencies>
-                                    <dependency>
-                                        <groupId>net.sf.proguard</groupId>
-                                        <artifactId>proguard-base</artifactId>
-                                        <version>5.2</version>
-                                        <scope>runtime</scope>
-                                    </dependency>
-                                </dependencies>
+
                             </configuration>
                         </execution>
                     </executions>
