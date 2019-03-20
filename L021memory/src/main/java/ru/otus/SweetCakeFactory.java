@@ -5,4 +5,8 @@ public class SweetCakeFactory extends CakeFactory {
     public SweetCake cookTheCake(int weight, String name) {
         return new SweetCake(weight,name);
     }
+
+    public SweetCake cookRandomCake() {
+        return new SweetCake();
+    }
 }

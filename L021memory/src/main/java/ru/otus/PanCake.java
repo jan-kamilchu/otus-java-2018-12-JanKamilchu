@@ -1,5 +1,5 @@
 package ru.otus;
-
+import  java.util.Random;
 public class PanCake implements Cake {
     private int weightP;
     private String nameP;
@@ -9,6 +9,9 @@ public class PanCake implements Cake {
         this.weightP = weight;
     }
 
+    public PanCake(){
+        this.weightP = new Random().nextInt();
+    }
     public int GetWeight() {
         return this.weightP;
     }

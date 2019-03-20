@@ -5,4 +5,8 @@ public class PanCakeFactory extends CakeFactory {
     public PanCake cookTheCake(int weight, String name) {
         return new PanCake(weight,name);
     }
+
+    public PanCake cookRandomCake() {
+        return new PanCake();
+    }
 }
